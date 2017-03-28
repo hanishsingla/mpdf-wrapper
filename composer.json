@@ -22,10 +22,11 @@
     "suggest": {
         "mpdf/mpdf": "^6.1"
     },
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
-        "psr-0": {
-            "Symfgenus\\MpdfWrapper": ""
+        "psr-4": {
+            "Symfgenus\\MpdfWrapper\\": ""
         }
     },
     "extra": {
