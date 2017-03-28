@@ -21,10 +21,5 @@
     },
     "suggest": {
         "mpdf/mpdf": "^6.1"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "4.x.x-dev"
-        }
     }
 }
