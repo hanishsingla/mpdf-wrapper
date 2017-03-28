@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class mpdfWrapperExtension extends Extension
+class MpdfWrapperExtension extends Extension
 {
     /**
      * {@inheritDoc}
