@@ -1,0 +1,3 @@
+services:
+    invoffice.mpdfport:
+        class: InvOffice\MpdfPortBundle\Service\MpdfService
