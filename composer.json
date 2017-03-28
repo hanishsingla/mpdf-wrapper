@@ -1,5 +1,5 @@
 {
-    "name": "hanishsingla/mpdf-wrapper",
+    "name": "symfgenus/mpdf-wrapper",
     "type": "symfony-bundle",
     "description": "This bundle allows to use mpdf library with symfony3.",
     "keywords": ["Symfony2", "Symfony3", "bundle", "mpdf", "wrapper"],
@@ -22,9 +22,15 @@
     "suggest": {
         "mpdf/mpdf": "^6.1"
     },
+    "prefer-stable": true,
+    "autoload": {
+        "psr-0": {
+            "Symfgenus\\MpdfWrapper": ""
+        }
+    },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.x.x-dev"
+            "dev-master": "2.x.x-dev"
         }
     }
 }

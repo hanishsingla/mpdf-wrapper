@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanish\Bundle\MpdfWrapperBundle\DependencyInjection;
+namespace Symfgenus\MpdfWrapper\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

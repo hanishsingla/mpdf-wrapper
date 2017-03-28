@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanish\Bundle\MpdfWrapperBundle\DependencyInjection;
+namespace Symfgenus\MpdfWrapper\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

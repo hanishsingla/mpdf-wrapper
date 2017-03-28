@@ -1,11 +1,11 @@
 <?php
-
-namespace Hanish\Bundle\MpdfWrapperBundle\Service;
+namespace Symfgenus\MpdfWrapper\Service;
 
 use Symfony\Component\HttpFoundation\Response;
 
 class MpdfService
 {
+
     private $addDefaultConstructorArgs = true;
     public $pdf;
 
@@ -49,18 +49,19 @@ class MpdfService
     {
         //Calculate arguments
         $defaultOptions = array(
-                'constructorArgs'     => array(),
-                'writeHtmlMode'       => null,
-                'writeHtmlInitialise' => null,
-                'writeHtmlClose'      => null,
-                'outputFilename'      => '',
-                'outputDest'          => 'S',
-                'mpdf'                => null
+            'constructorArgs'     => array(),
+            'writeHtmlMode'       => null,
+            'writeHtmlInitialise' => null,
+            'writeHtmlClose'      => null,
+            'outputFilename'      => '',
+            'outputDest'          => 'S',
+            'mpdf'                => null
         );
         $options = array_merge($defaultOptions, $argOptions);
         extract($options);
 
-        if (null == $mpdf) $mpdf = $this->getMpdf($constructorArgs);
+        if (null == $mpdf)
+            $mpdf = $this->getMpdf($constructorArgs);
 
         //Add argguments to AddHtml function
         $writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
@@ -104,5 +105,4 @@ class MpdfService
     {
         return $this->addDefaultConstructorArgs;
     }
-
 }
