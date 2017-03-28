@@ -1,0 +1,30 @@
+{
+    "name": "hanishsingla/mpdf-wrapper",
+    "type": "symfony-bundle",
+    "description": "This bundle allows to use mpdf library with symfony3.",
+    "keywords": ["Symfony2", "Symfony3", "bundle", "mpdf", "wrapper"],
+    "homepage": "https://github.com/hanishsingla/mpdf-wrapper",
+    "license": "MIT",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Hanish Singla",
+            "email": "hksingla92@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "~2.8|~3.0"
+    },
+    "require-dev": {
+        "mpdf/mpdf": "^6.1"
+    },
+    "suggest": {
+        "mpdf/mpdf": "^6.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.x.x-dev"
+        }
+    }
+}
