@@ -1,7 +1,5 @@
 # mpdf-wrapper
 
-[![Total Downloads](https://poser.pugx.org/fp/jsformvalidator-bundle/downloads.png)](https://packagist.org/packages/fp/jsformvalidator-bundle)
-
 This bundle allows to use mpdf library with symfony3.
 
 
@@ -31,4 +29,8 @@ public function registerBundles()
 
 ## 2 Usage<a name="p_2"></a>
 
-MPDF instance can be loaded with help of $this->get('symfgenus.mpdf.wrapper').
+MPDF instance can be loaded with help of 
+
+```php
+$this->get('symfgenus.mpdf.wrapper').
+```
