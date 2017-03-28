@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanish\Bundle\MpdfPortBundle;
+namespace Hanish\Bundle\MpdfWrapperBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

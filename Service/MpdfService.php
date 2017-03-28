@@ -1,6 +1,6 @@
 <?php
 
-namespace InvOffice\MpdfPortBundle\Service;
+namespace Hanish\Bundle\MpdfWrapperBundle\Service;
 
 use Symfony\Component\HttpFoundation\Response;
 
