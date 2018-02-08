@@ -1,11 +1,11 @@
 <?php
+
 namespace Symfgenus\MpdfWrapper\Service;
 
 use Symfony\Component\HttpFoundation\Response;
 
 class MpdfService
 {
-
     private $addDefaultConstructorArgs = true;
     public $pdf;
 
@@ -17,7 +17,6 @@ class MpdfService
 
     public function init($constructorArgs = array())
     {
-
         $this->getMpdf($constructorArgs);
         return $this;
     }
@@ -60,8 +59,9 @@ class MpdfService
         $options = array_merge($defaultOptions, $argOptions);
         extract($options);
 
-        if (null == $mpdf)
+        if (null == $mpdf) {
             $mpdf = $this->getMpdf($constructorArgs);
+        }
 
         //Add argguments to AddHtml function
         $writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
@@ -105,4 +105,5 @@ class MpdfService
     {
         return $this->addDefaultConstructorArgs;
     }
+
 }

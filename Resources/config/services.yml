@@ -1,3 +1,8 @@
 services:
-    symfgenus.mpdf.wrapper:
+    Symfgenus\MpdfWrapper\Service\MpdfService:
         class: Symfgenus\MpdfWrapper\Service\MpdfService
+        public: false
+        
+    symfgenus.mpdf.wrapper:
+        alias: '@Symfgenus\MpdfWrapper\Service\MpdfService'
+        public: true
