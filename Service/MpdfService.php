@@ -7,15 +7,26 @@ use Symfony\Component\HttpFoundation\Response;
 class MpdfService
 {
     private $addDefaultConstructorArgs = true;
+    private $tmp_dir;
     public $pdf;
 
-    public function __construct($constructorArgs = array())
+    public function __construct($constructorArgs = [])
     {
+        $this->tmp_dir = $cache_dir . '/mpdf/';
+
         $this->getMpdf($constructorArgs);
+        if (!is_dir($this->tmp_dir)) {
+            mkdir($this->tmp_dir, 0777);
+        }
+
+        if (!is_writable($this->tmp_dir)) {
+            throw new Exception("Temp directory not writeable: " . $this->tmp_dir);
+        }
+
         return $this;
     }
 
-    public function init($constructorArgs = array())
+    public function init($constructorArgs = [])
     {
         $this->getMpdf($constructorArgs);
         return $this;
@@ -23,19 +34,25 @@ class MpdfService
 
     /**
      * Get an instance of mPDF class
-     * @param array $constructorArgs arguments for mPDF constror
+     * @param array $constructorArgs arguments for mPDF constructor
      * @return \mPDF
      */
-    public function getMpdf($constructorArgs = array())
+    public function getMpdf($constructorArgs = [])
     {
-        $allConstructorArgs = $constructorArgs;
         if ($this->getAddDefaultConstructorArgs()) {
-            $allConstructorArgs = array_merge(array('utf-8', 'A4'), $allConstructorArgs);
+            $defaultArgs = [
+                'mode'            => 'utf-8',
+                'format'          => 'A4',
+                'tempDir'         => $this->tmp_dir,
+                'showImageErrors' => true,
+                'debug'           => true
+            ];
+
+            $constructorArgs = array_merge($defaultArgs, $constructorArgs);
         }
 
         if (!$this->pdf || !empty($constructorArgs)) {
-            $reflection = new \ReflectionClass('\mPDF');
-            $this->pdf = $reflection->newInstanceArgs($allConstructorArgs);
+            $this->pdf = new \Mpdf\Mpdf($constructorArgs);
         }
 
         return $this->pdf;
@@ -44,36 +61,40 @@ class MpdfService
     /**
      * Returns a string which content is a PDF document
      */
-    public function generatePdf($html, array $argOptions = array())
+    public function generatePdf($html, array $argOptions = [])
     {
         //Calculate arguments
-        $defaultOptions = array(
-            'constructorArgs'     => array(),
+        $defaultOptions = [
+            'constructorArgs'     => [],
             'writeHtmlMode'       => null,
             'writeHtmlInitialise' => null,
             'writeHtmlClose'      => null,
             'outputFilename'      => '',
             'outputDest'          => 'S',
-            'mpdf'                => null
-        );
+        ];
         $options = array_merge($defaultOptions, $argOptions);
-        extract($options);
-
-        if (null == $mpdf) {
-            $mpdf = $this->getMpdf($constructorArgs);
-        }
-
-        //Add argguments to AddHtml function
-        $writeHtmlArgs = array($writeHtmlMode, $writeHtmlInitialise, $writeHtmlClose);
-        $writeHtmlArgs = array_filter($writeHtmlArgs, function($x) {
-            return !is_null($x);
-        });
-        $writeHtmlArgs['HTMLHeader'] = $html;
-
-        @call_user_func_array(array($mpdf, 'WriteHTML'), $writeHtmlArgs);
 
         //Add arguments to Output function
-        $content = $mpdf->Output($outputFilename, $outputDest);
+        try {
+            if ($html) {
+                $mpdf = $this->getMpdf($options['constructorArgs']);
+                $mpdf->WriteHTML($html);
+                $content = $mpdf->Output($options['outputFilename'], $options['outputDest']);
+            } elseif ($this->pdf) {
+                $content = $this->pdf->Output($options['outputFilename'], $options['outputDest']);
+            }
+        } catch (\Mpdf\MpdfException $e) {
+            //// Note: safer fully qualified exception name used for catch
+            // Process the exception, log, print etc.
+            echo $e->getMessage();
+            exit;
+        } catch (\Exception $e) {
+            // Note: safer fully qualified exception name used for catch
+            // Process the exception, log, print etc.
+            echo $e->getMessage();
+            exit;
+        }
+
         return $content;
     }
 
