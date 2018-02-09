@@ -10,11 +10,12 @@ class MpdfService
     private $tmp_dir;
     public $pdf;
 
-    public function __construct($constructorArgs = [])
+    public function __construct($cache_dir)
     {
         $this->tmp_dir = $cache_dir . '/mpdf/';
 
-        $this->getMpdf($constructorArgs);
+        $this->init();
+
         if (!is_dir($this->tmp_dir)) {
             mkdir($this->tmp_dir, 0777);
         }
@@ -28,7 +29,12 @@ class MpdfService
 
     public function init($constructorArgs = [])
     {
-        $this->getMpdf($constructorArgs);
+        $this->pdf = $this->getMpdf($constructorArgs);
+
+        if (!$this->pdf || !empty($constructorArgs)) {
+            $this->pdf = $this->init($constructorArgs);
+        }
+
         return $this;
     }
 
@@ -51,11 +57,7 @@ class MpdfService
             $constructorArgs = array_merge($defaultArgs, $constructorArgs);
         }
 
-        if (!$this->pdf || !empty($constructorArgs)) {
-            $this->pdf = new \Mpdf\Mpdf($constructorArgs);
-        }
-
-        return $this->pdf;
+        return new \Mpdf\Mpdf($constructorArgs);
     }
 
     /**

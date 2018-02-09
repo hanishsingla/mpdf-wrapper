@@ -1,5 +1,6 @@
 services:
     Symfgenus\MpdfWrapper\Service\MpdfService:
+        arguments: ["%kernel.cache_dir%"]
         public: false
         
     symfgenus.mpdf.wrapper:
