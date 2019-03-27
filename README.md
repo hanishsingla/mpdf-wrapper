@@ -28,7 +28,7 @@ Symfony flex activates the bundles automatically. If it is not, then enable the 
 
 MpdfService provides many ways to use MPDF.
 
-###2.1 It can generate a direct pdf response which can be served through any route.
+### 2.1 It can generate a direct pdf response which can be served through any route.
 
 ```php
 // /config/bundles.php
@@ -39,7 +39,7 @@ MpdfService provides many ways to use MPDF.
     }
 ```
 
-###2.2 It can also generate pdf content which can be saved in a variable and used.
+### 2.2 It can also generate pdf content which can be saved in a variable and used.
 
 ```php
 // /config/bundles.php
@@ -50,7 +50,7 @@ MpdfService provides many ways to use MPDF.
     }
 ```
 
-###2.3 Sometimes there is need to create multiple PDFs, MpdfService can be used as following:
+### 2.3 Sometimes there is need to create multiple PDFs, MpdfService can be used as following:
 
 ```php
 // /config/bundles.php
@@ -72,7 +72,7 @@ MpdfService provides many ways to use MPDF.
     }
 ```
 
-## 2 Usage for symfony 3<a name="p_2"></a>
+## 3 Usage for symfony 3<a name="p_2"></a>
 
 For symfony 3, this service can be loaded as following:
 
