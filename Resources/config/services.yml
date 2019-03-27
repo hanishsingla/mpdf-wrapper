@@ -1,8 +1,8 @@
 services:
-    Symfgenus\MpdfWrapper\Service\MpdfService:
+    Symfgenus\MpdfWrapper\MpdfService:
         arguments: ["%kernel.cache_dir%"]
         public: false
         
     symfgenus.mpdf.wrapper:
-        alias: Symfgenus\MpdfWrapper\Service\MpdfService
+        alias: Symfgenus\MpdfWrapper\MpdfService
         public: true

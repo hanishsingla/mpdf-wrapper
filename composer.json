@@ -13,16 +13,24 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "symfony/framework-bundle": "~2.8|~3.0|~4.0",
+        "php": ">=7.0",
+        "symfony/framework-bundle": "~4.0",
         "mpdf/mpdf": "^7.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Symfgenus\\MpdfWrapper\\": ""
+            "Symfgenus\\MpdfWrapper\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Symfgenus\\MpdfWrapper\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.2"
     },
     "extra": {
         "branch-alias": {
