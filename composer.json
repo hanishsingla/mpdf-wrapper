@@ -14,14 +14,14 @@
     ],
     "require": {
         "php": ">=7.0",
-        "symfony/framework-bundle": "~4.0",
+        "symfony/framework-bundle": "~3.0|~4.0",
         "mpdf/mpdf": "^7.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Symfgenus\\MpdfWrapper\\": "src/"
+            "Symfgenus\\MpdfWrapper\\": ""
         }
     },
     "autoload-dev": {
